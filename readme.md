@@ -34,7 +34,6 @@ import Type; // since CNE doesn't auto import Type
 
 var ndllName = "gamejolt-api"; // our GameJolt NDLL name
 public function gamejolt_init() {
-    // we get the function for init and then call it immediately with a Typedef param (since for some reason NDLL's cant reflect the class type itself)
     // Arguments for getFunction is (name:String, function_name:String, args:Int)
     NdllUtil.getFunction(ndllName, "gamejolt_init", 2)(Type,
     "AES Encryption here");
