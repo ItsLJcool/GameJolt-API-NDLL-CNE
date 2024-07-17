@@ -6,9 +6,8 @@ This api is updated to v1.2 as of now.
 Here you can learn how to call functions and to initalize your NDLL calls.
 
 If you are copying this NDLL, please credit Me (ItsLJcool) and Neo with these links:  <br/>
-ItsLJcool:
-https://www.youtube.com/@ItsLJcool | Discord: @ItsLJcool<br/>
-Neo: https://x.com/Ne_Eo_Twitch | Discord: @ne_eo<br/>
+ItsLJcool: https://www.youtube.com/@ItsLJcool | Discord: @ItsLJcool<br/>
+Neo: https://socials.niirou.se/ne_eo | Discord: @ne_eo<br/>
 
 Lets get started with the documentation!
 
