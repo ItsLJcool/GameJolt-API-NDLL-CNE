@@ -71,6 +71,7 @@ And DM Me or Neo on Discord if you need any help with the functions.
 
 > [!CAUTION]
 > If your NDLL name is **not** `gamejolt-api`, then it will crash. dont feel like making a function to fix this lol, Neo can do it.
+> <br/>Also all return values are a `String` so you need to `JSON.parse()` them to get the values lol. Sorry!
 
 This section is to document all the functions you can call with the Ndll.<br/>
 Code examples will have the `result` variable as the return value of the function, so you can just copy and trace the result to see what it returns.<br/>
