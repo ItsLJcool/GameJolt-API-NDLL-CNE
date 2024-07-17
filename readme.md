@@ -74,7 +74,9 @@ This section is to document all the functions you can call with the Ndll.<br/>
 Code examples will have the `result` variable as the return value of the function, so you can just copy and trace the result to see what it returns.<br/>
 
 ## Async
-
+> [!CAUTION]
+> **Currently ASYNC DOES NOT WORK**<br/>
+> Your game will crash so for now please do not call any functions w/ async
 ### Async
 
 Start off by doing after the gamejolt init function or after the `NdllUtil.getFunction("gamejolt-api", "setup_type", 1)(Type);` function.
