@@ -69,6 +69,9 @@ And we are done with initalizing the NDLL!!
 If you please report any bugs, please make sure to include the function name and the parameters you used.<br/><br/>
 And DM Me or Neo on Discord if you need any help with the functions.
 
+> [!CAUTION]
+> If your NDLL name is **not** `gamejolt-api`, then it will crash. dont feel like making a function to fix this lol, Neo can do it.
+
 This section is to document all the functions you can call with the Ndll.<br/>
 Code examples will have the `result` variable as the return value of the function, so you can just copy and trace the result to see what it returns.<br/>
 
