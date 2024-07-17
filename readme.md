@@ -41,6 +41,8 @@ public function gamejolt_init() {
 }
 ```
 ### How to get the AES Encryption Key
+The reason why we are using AES key is so you can still obscure your GameJolt Private Key and Game ID without having people actually knowing.
+
 You can get the AES Encryption Key by using the following code:
 ```haxe
 var aesKey = NdllUtil.getFunction(ndllName, "gamejolt_init", 2)("GameJolt's Game Private Key", "game_id"); // 2nd param for game_id can be an int or a string
