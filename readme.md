@@ -71,6 +71,82 @@ And DM Me or Neo on Discord if you need any help with the functions.
 
 This section is to document all the functions you can call with the Ndll.<br/>
 Code examples will have the `result` variable as the return value of the function, so you can just copy and trace the result to see what it returns.<br/>
+
+## Async
+
+### Async
+
+Start off by doing after the gamejolt init function or after the `NdllUtil.getFunction("gamejolt-api", "setup_type", 1)(Type);` function.
+
+```haxe
+var registerThread = NdllUtil.getFunction("gamejolt-api", "registerThread", 0);
+
+// Codename engine uses 4 threads for jobs, and in source you can toggle that off.
+// Meaning if you call Main.execAsync with a source code that doesn't allow threads then you might cause a null object reference.
+#if ALLOW_MULTITHREADING
+    registerThread();
+    for (i in 0...Main.gameThreads.length) {
+    	Main.execAsync(registerThread); // fill the threads with this function, so uninitialized threads don't run it
+    }
+#else
+    registerThread();
+#end
+```
+Then we need to setup the stack so you can get the results:
+```haxe
+var asyncStack:Array<Array<Dynamic>> = []; // [[name, args, result]]
+
+NdllUtil.getFunction(ndllName, "set_async_stack", 1)(asyncStack);
+
+while(asyncStack.length > 0) {
+    // or asyncStack.pop() if you dont really care about the order.
+    // Tho we recommend using the shift, or else certain results might take longer to process.
+	var arr = asyncStack.shift();
+	var func = arr[0];
+    var args = arr[1];
+	var result = arr[2];
+    // process the result
+	trace(func, args, result);
+}
+```
+
+## Calling asynchronous functions
+To call an asynchronous function, you need to use the `async_ndll_call` function.
+The `async_ndll_call` function takes 2 parameters, the first is the name of the function you want to call, and the second is an array of arguments.
+
+```haxe
+var async_call = NdllUtil.getFunction(ndllName, "async_ndll_call", 2);
+
+Main.execAsync(async_call("gamejolt_login", ["GameJolt Username", "GameJolt Token"]));
+// the result will be in the asyncStack
+```
+
+## Custom Functions
+
+### GameJolt Toggle
+This function will toggle the functions to return nothing, so instead of having to make your own functions to toggle off, you can just call a function to do so.
+
+#### Parameters
+> - `enabled` **[ boolean ]** - To enable or disable the GameJolt API.
+
+#### Example
+```haxe
+NdllUtil.getFunction(ndllName, "setApiEnabled", 1)( true );
+```
+
+### Last HTTP Error
+This function returns the last HTTP error that was returned by the GameJolt API.
+It is possible to get an error made from a different HTTP request if you don't get it in time.
+
+#### Parameters
+> - `None`
+
+#### Example
+```haxe
+var error = NdllUtil.getFunction(ndllName, "getLastError", 0)();
+```
+
+# GameJolt API Endpoints
 ## Users/
 ### Auth - GameJolt API Endpoint: `(users/auth)`
 
